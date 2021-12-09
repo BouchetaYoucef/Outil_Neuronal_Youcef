@@ -6,7 +6,6 @@ import pandas as pd
 import numpy as np
 import matplotlib as plt
 import cv2
-from tensorflow.keras.models import Model
 from tensorflow.keras.models import load_model
 import streamlit as st
 from streamlit_drawable_canvas import st_canvas
@@ -90,7 +89,7 @@ elif version_option == 'V2':
         accuracy = st.session_state.accuracy
         st.write(f'Accuracy score: {accuracy}')
 
-    def predict():
+    if st.button('Predict'):
         # instantiate model for prediction
         test_x = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         # instantiate model for prediction
@@ -103,11 +102,9 @@ elif version_option == 'V2':
         st.session_state.num_of_pred += 1
         # return predicted digit / num of predictions
         st.write(f'result: {np.argmax(val[0])}')
-
+        
         st.button('YES', on_click=good_predict)
         st.button('NO', on_click=bad_predict)
-
-    st.button('Predict', on_click=predict)
 
 
 
