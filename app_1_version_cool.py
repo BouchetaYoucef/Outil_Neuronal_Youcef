@@ -12,7 +12,7 @@ import matplotlib as plt
 import streamlit as st
 
 # Custom imports 
-# st.title("Streamlit exemple")
+st.title("Streamlit exemple")
 df_test = pd.read_csv("test.csv")
 MODEL_DIR = os.path.join("C:/Users/simplon/Desktop/Notebooks/Dossier_ALISON/Outil_Visualisation_Réseau_Neuronal"  , "model_weight.h5")
 model = load_model("C:/Users/simplon/Desktop/Notebooks/Dossier_ALISON/Outil_Visualisation_Réseau_Neuronal/model_weight.h5")
