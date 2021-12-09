@@ -76,6 +76,20 @@ elif version_option == 'V2':
 
     val = ''
 
+    def good_predict():
+        st.session_state.tp += 1
+        tp = st.session_state.tp
+        num_of_pred = st.session_state.num_of_pred
+        st.session_state.accuracy = tp / num_of_pred
+        accuracy = st.session_state.accuracy
+        st.write(f'Accuracy score: {accuracy}')
+    def bad_predict():
+        tp = st.session_state.tp
+        num_of_pred = st.session_state.num_of_pred
+        st.session_state.accuracy = tp / num_of_pred
+        accuracy = st.session_state.accuracy
+        st.write(f'Accuracy score: {accuracy}')
+
     def predict():
         # instantiate model for prediction
         test_x = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -92,20 +106,6 @@ elif version_option == 'V2':
 
         st.button('YES', on_click=good_predict)
         st.button('NO', on_click=bad_predict)
-
-    def good_predict():
-        st.session_state.tp += 1
-        tp = st.session_state.tp
-        num_of_pred = st.session_state.num_of_pred
-        st.session_state.accuracy = tp / num_of_pred
-        accuracy = st.session_state.accuracy
-        st.write(f'Accuracy score: {accuracy}')
-    def bad_predict():
-        tp = st.session_state.tp
-        num_of_pred = st.session_state.num_of_pred
-        st.session_state.accuracy = tp / num_of_pred
-        accuracy = st.session_state.accuracy
-        st.write(f'Accuracy score: {accuracy}')
 
     st.button('Predict', on_click=predict)
 
